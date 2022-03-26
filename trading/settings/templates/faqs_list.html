@@ -1,0 +1,116 @@
+﻿{% extends 'base.html' %}
+    
+{% block styles %}
+    <link rel="stylesheet" href="/static/assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+
+    <!-- Bootstrap 4.0-->
+    <link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap extend-->
+    <link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/css/master_style.css">
+
+    <!-- UltimatePro Admin skins -->
+    <link rel="stylesheet" href="/static/css/skins/_all-skins.css">
+    
+    <!-- Bootstrap select -->
+    <link rel="stylesheet" href="/static/assets/vendor_components/bootstrap-select/dist/css/bootstrap-select.css">
+
+    <!-- Bootstrap tagsinput -->
+    <link rel="stylesheet" href="/static/assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+{% endblock %}
+
+{% block content %}
+        <div class="modal center-modal fade" id="modal-center" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content" id="loader_placer">
+                    <div class="modal-header">
+                        <h5><b>Edit Q&A Pair</b></h5>
+                        <div type="button" class="close" onclick="deleteqna()">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="modelbody">
+                        <h5 class="modal-title" style="font-weight:bold;"><p style="display:inline">Answer:</p> <textarea type="text" id="answerdata" value="" rows="5" cols="50" oninput="this.setAttribute('size',this.value.length)" placeholder="Answer"></textarea></h5>
+                        <img src="reload.gif" class="close" id="img1" style="display:none;" />
+                        <div class="tags-default">
+                            Question :<input type="text" value="" id="questiondata" data-role="tagsinput" placeholder="add tags" />
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-footer-uniform" id="modelfooter">
+                        <div type="button" class="btn btn-bold btn-pure btn-secondary" data-dismiss="modal">Close</div>
+                        <div type="submit" id="Updateqna" onclick="UpdateQna()" value="" class="btn btn-bold btn-pure btn-primary float-right">Save changes</div>
+                        <img src="reload.gif" id="img" style="display:none" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="container">
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                       <div class="col-12">
+                            <div class="box">
+                                <div style="display: flex;" class="box-header with-border">
+                                    <h4 class="box-title">Q&A Pair List</h4>
+                                    <div class="d-flex" style="margin-left: 15px !important;">
+                                        <a href="{{ url_for('settings_bp.faqs_new') }}">
+                                            <div class="btn btn-primary btn-round ml-auto mb-3">
+                                            <i class="fa fa-plus"></i>
+                                            Add QNA Pair
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div style="margin-left:auto;">
+                                        <div>
+                                            <input type="text" name="s" id="searchdata" onkeyup="myFunction()" placeholder="Search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body" id="data_loader_placer">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100" id="questionlist">
+                                            <thead>
+                                                <tr>
+                                                    <th>Question</th>
+                                                    <th>Answer</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- Bootstrap 4.0-->
+    <script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+    <!-- UltimatePro Admin App -->
+    <script src="/static/js/template.js"></script>
+
+    <!-- UltimatePro Admin for demo purposes -->
+    <script src="/static/js/demo.js"></script>
+
+    <!-- Bootstrap tagsinput -->
+    <script src="/static/assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+    <script src="/static/js/settings/main_faqs_list.js"></script>
+
+{% endblock %}

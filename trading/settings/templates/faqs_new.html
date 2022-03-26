@@ -1,0 +1,73 @@
+﻿{% extends 'base.html' %}
+    
+{% block styles %}
+    <!-- Bootstrap tagsinput -->
+    <link rel="stylesheet" href="/static/js/settings/bootstrap-tagsinput.css">
+    <!-- Bootstrap 4.0-->
+    <link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap extend-->
+    <link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/css/master_style.css">
+
+    <!-- UltimatePro Admin skins -->
+    <link rel="stylesheet" href="/static/css/skins/_all-skins.css">
+{% endblock %}
+
+{% block content %}
+    <div class="content-wrapper">
+        <div class="container">
+            <section class="content">
+                <!-- Default box -->
+                <div class="box" >
+                    <form id="add_faq">
+                        <div class="box-header with-border">
+                            <input required type="text" placeholder="Answer" class="box-header with-border" style="border:0px; width: 100%;padding: 12px;border: 1px solid #ccc;border-radius: 4px;resize: vertical;" id="answer" />
+                            <!--<h4 class="box-title">Answer</h4>-->
+                        </div>
+                        <div class="box-body">
+
+                            <div class="tags-default">
+                                <input required type="text" value="" data-role="tagsinput" placeholder="Add Questions" id="questions" style=" width:100%; padding: 12px;border: 1px solid #ccc;border-radius: 4px;resize: vertical;" />
+                            </div>
+
+                            <!-- <input type="text" placeholder="Add Questions" class="box-body" style="border:0px;" />-->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer"id="loader_placer">
+                            <button class="box-footer" id="Traindata" type="button" style="background-color: #3e8ef7; border: none; color: white; padding: 16px 32px; text-decoration: none; margin: 4px 2px;cursor: pointer;">Train</button>
+                            <img src="/static/images/reload.gif" id="img" style="display:none" />
+                        </div>
+                    </form>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- Bootstrap 4.0-->
+    <script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- FastClick -->
+    <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+
+    <!-- UltimatePro Admin App -->
+    <script src="/static/js/template.js"></script>
+
+    <!-- UltimatePro Admin for demo purposes -->
+    <script src="/static/js/demo.js"></script>
+    <script src="/static/js/settings/main_faqs_new.js"></script>
+    <!-- Bootstrap tagsinput -->
+    <script src="/static/assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+{% endblock %}

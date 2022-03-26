@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Stock Trading</title>
+    <link href="/static/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.css" rel="stylesheet">
+      <!-- Loader -->
+    <link rel="stylesheet" href="/static/css/loader.css">
+    <link href="/static/assets/vendor_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+	{% block styles %}
+	{% endblock %}
+     
+  </head>
+
+<body class="hold-transition skin-info dark-sidebar sidebar-mini">
+<div class="wrapper" style="height: auto;min-height: 100%;background-color: #eeeeee">
+
+  <header class="main-header">
+    <!-- Logo -->
+    
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+		
+      <div style="margin-left: auto!important;" class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">
+		  	  
+		  <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="/static/images/avatar/11.png" class="user-image rounded-circle" alt="User Image">
+            </a>
+            <ul class="dropdown-menu animated ">
+              <!-- User image -->
+              <li class="user-header bg-img" style="background-image: url(/static/images/stocks/stock-login.jpg)" data-overlay="3">
+				  <div class="flexbox align-self-center">					  
+				  	<img src="/static/images/avatar/11.png" class="float-left rounded-circle" alt="User Image">
+				  	<div>
+						<h4 class="user-name align-self-center">
+						  <span style="word-break: break-all;">{{current_user.name}}</span>
+						</h4>
+						<small style="color: white;word-break: break-all;">{{current_user.email}}</small>
+					</div>
+				  </div>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+				    <!-- <a class="dropdown-item" href="javascript:void(0)"><i class="ion ion-person"></i> My Profile</a>
+					<a class="dropdown-item" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Inbox</a> -->
+					<div class="dropdown-divider"></div>
+					<div class="p-10"><a style="background-color:#33643d;border-color:unset;" href="{{ url_for('auth_bp.logout') }}" class="btn btn-sm btn-rounded btn-success">Logout</a></div>
+              </li>
+            </ul>
+          </li>	
+			
+		  		
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% if current_user.role=='Admin' %}
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar">
+      
+      <!-- sidebar menu-->
+      <ul class="sidebar-menu" data-widget="tree" style="margin-top: 10px;">
+		    <li class="treeview">
+          <a href="{{ url_for('admin_bp.dashboard') }}">
+            <i class="ti-dashboard"></i>
+            <span>Home</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </aside>
+  {% endif %}
+
+  <!-- Content Wrapper. Contains page content -->
+  {% block content %}
+  {% endblock %}
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  <li class="nav-item">
+			<a class="nav-link" href="javascript:void(0)">Terms & Conditions</a>
+		  </li>
+		</ul>
+    </div>
+	  &copy; 2022 <a href="https://www.linkedin.com/in/mankala-vageeshan-4b8128126/" target="_blank">Intel - Vageeshan Mankala (Intern)</a>. All Rights Reserved.
+  </footer>
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+  	
+	 
+	  
+	<!-- jQuery 3 -->
+	
+	<script src="/static/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+  <script src="/static/assets/vendor_components/popper/popper.min.js"></script>
+	<script type="text/javascript">
+		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+	<script src="/static/js/pages/toastr.js"></script>
+	<!-- <script src="/static/js/notifications.js"></script> -->
+  <script src="/static/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+  <script src="/static/assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js"></script>
+	<script src="/static/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+	{% block scripts %}
+	{% endblock %}
+  <script src="/static/js/jquery.validate.min.js"></script>
+  <script src="/static/js/formvalidation.js"></script>
+</body>
+</html>

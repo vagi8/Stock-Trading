@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+	
+	<!-- Data Table-->
+	<link rel="stylesheet" type="text/css" href="/static/assets/vendor_components/datatable/datatables.min.css"/>
+	
+	<!-- Bootstrap extend-->
+	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+
+	<!-- Theme style -->
+	<link rel="stylesheet" href="/static/css/master_style.css">
+
+	<!-- UltimatePro Admin skins -->
+	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
+	
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container">
+
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+			
+			<div class="col-12">
+			  <!-- /.box -->
+				<div class="box" id="CropsBox">
+					<div class="box-header with-border">
+						<div class="d-flex" style="margin-left: auto;">
+							<h3 class="box-title">Crops</h3>
+							<div type="button" class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#edit_crops_modal" id="add_crop_details">
+								<i class="fa fa-plus"></i>Add Crop</div>
+						</div>
+					</div>
+					<!-- Add Channel Modal -->
+					<div class="modal fade" id="edit_crops_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header no-bd">
+								<h5>Crops</h5>
+								</div>
+								<div class="modal-body">
+									<!-- <p class="small">Create a new row using this form, make sure you fill them all</p> -->
+									<form id="edit_crops_form">
+										<div class="form-group" id="DivCropID">
+											<label for="CropID">Crop ID</label>
+											<input readonly type="text" class="form-control" id="CropID" name="CropID">
+										</div>
+										<div class="form-group">
+											<label for="CropName">Crop Name</label>
+											<input required type="text" class="form-control" id="CropName" name="CropName">
+											<div id="ErrordivCropName"></div>
+										</div>
+										<div class="form-group">
+											<label for="Description">Description</label>
+											<input required type="text" class="form-control" id="Description" name="Description">
+										</div>
+										<div class="form-group">
+											<label for="CropCategory">Crop Category</label>
+											<select required class="selectpicker custom-select form-control" id="CropCategory" name="CropCategory">
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="CropSector">Crop Sector</label>
+											<select required class="selectpicker custom-select form-control" id="CropSector" name="CropSector">
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="Duration">Duration ( In Days )</label>
+											<input required type="number" class="form-control" id="Duration" name="Duration">
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer no-bd">
+									<div class="btn btn-primary" id="submit_crop_details" >Add</div>
+									<div class="btn btn-danger" data-dismiss="modal">Close</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="table-responsive">
+						 <table id="table_crops" class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100">
+							<thead>
+								<tr>
+									<th>Crop ID</th>
+									<th>Crop Name</th>
+									<th>Description</th>
+									<th>Crop Category</th>
+									<th>Crop Sector</th>
+									<th>Duration (Days)</th>
+									<th>Edit</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+						</table>
+						</div>              
+					</div>
+					<!-- /.box-body -->
+				</div>
+			  <!-- /.box -->          
+			</div>
+			<!-- /.col -->
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}  
+
+{% block scripts %}
+	<!-- popper -->
+	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+	
+	<!-- Bootstrap 4.0-->
+	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<!-- SlimScroll -->
+	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	
+	<!-- FastClick -->
+	<script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+	
+	<!-- UltimatePro Admin App -->
+	<script src="/static/js/template.js"></script>
+	
+	<!-- UltimatePro Admin for demo purposes -->
+	<script src="/static/js/demo.js"></script>
+	<script src="/static/js/settings/main_crops.js"></script>
+	<!-- This is data table -->
+    <script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+{% endblock %}

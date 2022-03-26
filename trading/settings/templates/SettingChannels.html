@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+	
+	<!-- Data Table-->
+	<link rel="stylesheet" type="text/css" href="/static/assets/vendor_components/datatable/datatables.min.css"/>
+	
+	<!-- Bootstrap extend-->
+	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+
+	<!-- Theme style -->
+	<link rel="stylesheet" href="/static/css/master_style.css">
+
+	<!-- UltimatePro Admin skins -->
+	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
+	
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container">
+
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+			
+			<div class="col-12">
+
+			 
+			  <!-- /.box -->
+
+			  <div class="box">
+				<div style="display: flex;" style="display: hide;" class="box-header with-border">
+				  	<h3 class="box-title">Channels</h3>
+					<div class="d-flex" style="margin-left: auto;">
+						<div id="add_channel_details">
+							<div class="divdisable btn btn-primary btn-round ml-auto mb-3">
+							<i class="fa fa-plus"></i>
+							Add Channel
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Add Channel Modal -->
+				<div style="display: hide;" class="modal fade" id="edit_channel_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header no-bd">
+								<h5 class="modal-title">
+									<span class="fw-mediumbold">
+									Channel</span>
+								</h5>
+								<div type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</div>
+							</div>
+							<div class="modal-body">
+								<!-- <p class="small">Create a new row using this form, make sure you fill them all</p> -->
+								<form id="edit_channel_form" role="form">
+									<div class="row">
+										<div class="col-sm-12" id="DivChannelID">
+											<div class="form-group form-group-default">
+												<label for="ChannelID">Channel ID</label>
+												<input readonly id="ChannelID" name="ChannelID" type="text" class="form-control" placeholder="Auto Increament" >
+											</div>
+										</div>
+				
+										<div class="col-md-6 pr-0">
+											<div class="form-group form-group-default">
+												<label for="ChannelName">Channel Name</label>
+												<input required id="ChannelName" name="ChannelName" type="text" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group form-group-default">
+												<label for="Description">Description</label>
+												<input required id="Description" name="Description" type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer no-bd">
+								<div type="button" id="submit_channel_details" class="btn btn-primary" data-dismiss="modal">Add</div>
+								<div type="button" class="btn btn-danger" data-dismiss="modal">Close</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<div class="table-responsive">
+						<table id="table_channel" class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100">
+							<thead>
+								<tr>
+									<th>Channel ID</th>
+									<th>Channel Name</th>
+									<th>Description</th>
+									<th>Edit</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+				<!-- /.box-body -->
+			  </div>
+			  <!-- /.box -->          
+			</div>
+			<!-- /.col -->
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}  
+
+{% block scripts %}
+	<!-- popper -->
+	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+	
+	<!-- Bootstrap 4.0-->
+	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<!-- SlimScroll -->
+	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	
+	<!-- FastClick -->
+	<script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+	
+	<!-- UltimatePro Admin App -->
+	<script src="/static/js/template.js"></script>
+	
+	<!-- UltimatePro Admin for demo purposes -->
+	<script src="/static/js/demo.js"></script>
+	<script src="/static/js/settings/main_channels.js"></script>
+	<!-- This is data table -->
+    <script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+{% endblock %}

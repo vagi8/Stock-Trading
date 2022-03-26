@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+	
+	<!-- Data Table-->
+	<link rel="stylesheet" type="text/css" href="/static/assets/vendor_components/datatable/datatables.min.css"/>
+	
+	<!-- Bootstrap extend-->
+	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+
+	<!-- Theme style -->
+	<link rel="stylesheet" href="/static/css/master_style.css">
+
+	<!-- UltimatePro Admin skins -->
+	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
+	
+{% endblock %}
+
+{% block content %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container">
+
+		<!-- Main content -->
+		<section class="content">
+		  <div class="row">
+			
+			<div class="col-12">
+				<div class="box" id="CropCategoryBox">
+					<div class="box-header with-border">
+						<div class="d-flex" style="margin-left: auto;">
+							<h3 class="box-title">Crops Category</h3>
+							<div type="button" class="btn btn-primary btn-round ml-auto mb-3" data-toggle="modal" data-target="#edit_crops_category_modal" id="add_crop_category">
+								<i class="fa fa-plus"></i>&nbsp;Add Category</div>
+						</div>
+					</div>
+					<!-- Add Channel Modal -->
+					<div class="modal fade" id="edit_crops_category_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header no-bd">
+								<h5>Crop Category</h5>
+								</div>
+								<div class="modal-body">
+									<!-- <p class="small">Create a new row using this form, make sure you fill them all</p> -->
+									<form id="edit_crops_form">
+										<div class="form-group" id="DivCropID">
+											<label for="CropCategoryName">Name</label>
+											<input required type="text" class="form-control" id="CropCategoryName" name="CropCategoryName">
+											<div id="ErrordivCropCategory"></div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer no-bd">
+									<div class="btn btn-primary" id="submit_crop_category_details" >Add</div>
+									<div class="btn btn-danger" data-dismiss="modal">Close</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<div class="table-responsive">
+						 <table id="table_crop_category" class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100">
+							<thead>
+								<tr>
+									<th>Name</th>
+								</tr>
+							</thead>
+						</table>
+						</div>              
+					</div>
+					<!-- /.box-body -->
+				</div>
+			  <!-- /.box -->          
+			</div>
+			<!-- /.col -->
+		  </div>
+		  <!-- /.row -->
+		</section>
+		<!-- /.content -->
+	  
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}  
+
+{% block scripts %}
+	<!-- popper -->
+	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+	
+	<!-- Bootstrap 4.0-->
+	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<!-- SlimScroll -->
+	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	
+	<!-- FastClick -->
+	<script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+	
+	<!-- UltimatePro Admin App -->
+	<script src="/static/js/template.js"></script>
+	
+	<!-- UltimatePro Admin for demo purposes -->
+	<script src="/static/js/demo.js"></script>
+	<script src="/static/js/settings/main_cropcategory.js"></script>
+	<!-- This is data table -->
+    <script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+	
+	<!-- UltimatePro Admin for Data Table -->
+	
+{% endblock %}
