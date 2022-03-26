@@ -1,0 +1,1 @@
+This is a stock trading paltform, as a project generated for Intel
