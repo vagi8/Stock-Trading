@@ -7,7 +7,8 @@ from sqlalchemy.exc import IntegrityError
 admin_bp = Blueprint(
     'admin_bp', __name__,
     template_folder='templates',
-    static_folder='static'
+    static_folder='static',
+    url_prefix='/admin'
 )
 
 @admin_bp.route("/dashboard",methods=['GET', 'POST'])

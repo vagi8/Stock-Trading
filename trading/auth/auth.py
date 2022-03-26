@@ -12,7 +12,7 @@ auth_bp = Blueprint(
 
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
-#@login_required
+# @login_required
 def signup():
     """
     User sign-up page.
@@ -21,8 +21,8 @@ def signup():
     POST requests validate form & user creation.
     """
     form = SignupForm()
-    error=''
-    if request.method=='POST':
+    error = ''
+    if request.method == 'POST':
         if form.validate_on_submit():
             existing_user = User.query.filter_by(email=form.email.data).first()
             if existing_user is None:
@@ -37,15 +37,21 @@ def signup():
                 db.session.add(user)
                 db.session.commit()  # Create new user
                 login_user(user)  # Log in as newly created user
-                return redirect(url_for('admin_bp.dashboard'))
+                if form.role.data == 'Admin':
+                    return redirect(url_for('admin_bp.dashboard'))
+                elif form.role.data == 'User':
+                    return redirect(url_for('user_bp.dashboard'))
+
+
             else:
-                error='User with Email ID already exists'
+                error = 'User with Email ID already exists'
         else:
-            error=''
-            for _,values in form.errors.items():
-                error=values[0]+'\n'
-    return render_template("/register.html",form=form,error=error)
-    
+            error = ''
+            for _, values in form.errors.items():
+                error = values[0] + '\n'
+    return render_template("/register.html", form=form, error=error)
+
+
 @auth_bp.route('/', methods=['GET', 'POST'])
 def login():
     """
@@ -60,27 +66,28 @@ def login():
 
     form = LoginForm()
     # Validate login attempt
-    error=''
-    if request.method=='POST':
+    error = ''
+    if request.method == 'POST':
         if form.validate_on_submit():
             user = User.query.filter_by(email=form.email.data).first()
             if not user:
-                error='Email ID Does not exist'
+                error = 'Email ID Does not exist'
             else:
                 if user and user.check_password(password=form.password.data):
                     login_user(user)
                     next_page = request.args.get('next')
                     return redirect(next_page or url_for('admin_bp.dashboard'))
                 elif not user.Status:
-                    error='User has been disabled'
+                    error = 'User has been disabled'
                 elif not user.check_password(password=form.password.data):
-                    error='Invalid Password'
+                    error = 'Invalid Password'
                 else:
-                    error='Internal Server Error'
-            return render_template("/authentication.html",form=form,error=error)
+                    error = 'Internal Server Error'
+            return render_template("/authentication.html", form=form, error=error)
         else:
-            error='Invalid details'
-    return render_template("/authentication.html",form=form,error=error)
+            error = 'Invalid details'
+    return render_template("/authentication.html", form=form, error=error)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -89,14 +96,16 @@ def load_user(user_id):
         return User.query.get(user_id)
     return None
 
+
 @login_manager.unauthorized_handler
 def unauthorized():
     """Redirect unauthorized users to Login page."""
     flash('You must be logged in to view that page.')
     return redirect(url_for('auth_bp.login'))
 
+
 @auth_bp.route("/logout")
-#@login_required
+# @login_required
 def logout():
     """User log-out logic."""
     logout_user()

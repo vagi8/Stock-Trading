@@ -64,23 +64,41 @@
   </header>
   
   <!-- Left side column. contains the logo and sidebar -->
-  {% if current_user.role=='Admin' %}
+
   <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">
       
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree" style="margin-top: 10px;">
-		    <li class="treeview">
+		{% if current_user.role=='Admin' %}
+          <li class="treeview">
           <a href="{{ url_for('admin_bp.dashboard') }}">
             <i class="ti-dashboard"></i>
             <span>Home</span>
           </a>
         </li>
+          {% elif  current_user.role=='User' %}
+
+        <li class="treeview">
+          <a href="#">
+            <i class="ti-dashboard"></i>
+            <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display:block;">
+            <li><a href="{{ url_for('admin_bp.dashboard') }}"><i class="ti-more"></i>Campaign Analytics</a></li>
+            <li><a href="{{ url_for('admin_bp.dashboard') }}"><i class="ti-more"></i>Bot Analytics</a></li>
+          </ul>
+        </li>
+
+          {% endif %}
       </ul>
     </section>
   </aside>
-  {% endif %}
+
 
   <!-- Content Wrapper. Contains page content -->
   {% block content %}
