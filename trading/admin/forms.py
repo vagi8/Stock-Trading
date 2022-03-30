@@ -1,8 +1,9 @@
 """Sign-up & log-in forms."""
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField,SelectField,IntegerField,FloatField,DateTimeField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, IntegerField, FloatField, DateTimeField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, NumberRange
 from .models import *
+
 
 class CreateStock(FlaskForm):
     """User Sign-up Form."""
@@ -40,16 +41,3 @@ class CreateStock(FlaskForm):
         'Last Traded Day'
     )
     submit = SubmitField('Create')
-
-
-class LoginForm(FlaskForm):
-    """User Log-in Form."""
-    email = StringField(
-        'Email',
-        validators=[
-            DataRequired(),
-            Email(message='Enter a valid email.')
-        ]
-    )
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Log In')

@@ -1,11 +1,9 @@
 """Database models."""
 # from flask_sqlalchemy import SQLAlchemy
 from .. import db
-from flask_login import UserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class Stocks(UserMixin, db.Model):
+class Stocks(db.Model):
     __tablename__ = 'stocks'
     id = db.Column(
         db.Integer,

@@ -16,4 +16,4 @@ def bot_analytics():
 @dashboard_bp.route("/dashboard")
 #@login_required
 def dashboard():
-    return render_template("/dashboard.html")
+    return render_template("/userDashboard.html")

@@ -81,16 +81,17 @@
           {% elif  current_user.role=='User' %}
 
         <li class="treeview">
-          <a href="#">
-            <i class="ti-dashboard"></i>
-            <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
+<!--            <i class="ti-dashboard"></i>-->
+<!--            <span>Dashboard</span>-->
+<!--            <span class="pull-right-container">-->
+<!--              <i class="fa fa-angle-right pull-right"></i>-->
+<!--            </span>-->
           <ul class="treeview-menu" style="display:block;">
-            <li><a href="{{ url_for('admin_bp.dashboard') }}"><i class="ti-more"></i>Campaign Analytics</a></li>
-            <li><a href="{{ url_for('admin_bp.dashboard') }}"><i class="ti-more"></i>Bot Analytics</a></li>
+            <li><a href="{{url_for('user_bp.dashboard')}}"><i class="ti-more"></i>Portfolio</a></li>
+            <li><a href=""><i class="ti-more"></i>Buy/Sell Stocks</a></li>
+              <li><a href=""><i class="ti-more"></i>Transactions History</a></li>
+              <li><a href="{{ url_for('user_bp.cash') }}"><i class="ti-more"></i>Deposit/Withdraw Cash</a></li>
+              <li><a href="{{ url_for('user_bp.viewstocks') }}"><i class="ti-more"></i>View All Stocks</a></li>
           </ul>
         </li>
 

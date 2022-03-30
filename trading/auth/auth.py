@@ -62,7 +62,10 @@ def login():
     """
     # Bypass if user is logged in
     if current_user.is_authenticated:
-        return redirect(url_for('admin_bp.dashboard'))
+        if current_user.role == 'Admin':
+            return redirect(url_for('admin_bp.dashboard'))
+        elif current_user.role == 'User':
+            return redirect(url_for('user_bp.dashboard'))
 
     form = LoginForm()
     # Validate login attempt
@@ -76,13 +79,14 @@ def login():
                 if user and user.check_password(password=form.password.data):
                     login_user(user)
                     next_page = request.args.get('next')
-                    return redirect(next_page or url_for('admin_bp.dashboard'))
-                elif not user.Status:
-                    error = 'User has been disabled'
+                    if user.role == 'Admin':
+                        return redirect(url_for('admin_bp.dashboard'))
+                    elif user.role == 'User':
+                        return redirect(url_for('user_bp.dashboard'))
                 elif not user.check_password(password=form.password.data):
                     error = 'Invalid Password'
                 else:
-                    error = 'Internal Server Error'
+                    error = 'System Currently Down. Try after some time'
             return render_template("/authentication.html", form=form, error=error)
         else:
             error = 'Invalid details'
