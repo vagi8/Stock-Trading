@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import Stocks, db
 from .forms import CreateStock
 from sqlalchemy.exc import IntegrityError
+import datetime
 
 # Blueprint Configuration
 admin_bp = Blueprint(
@@ -28,7 +29,11 @@ def dashboard():
                 ticker=form.ticker.data,
                 volume=form.volume.data,
                 initialPrice=form.initialPrice.data,
-                currentPrice=form.initialPrice.data
+                currentPrice=form.initialPrice.data,
+                openPrice=0,
+                dayHigh=0,
+                dayLow=form.initialPrice.data,
+                lastTradedDay=datetime.datetime(1990, 1, 1, 0, 0, 0, 0)
             )
             db.session.add(stock)
             try:

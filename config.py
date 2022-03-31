@@ -19,6 +19,7 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('PROD_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    SCHEDULER_API_ENABLED = True
 
 class DevConfig(Config):
     FLASK_ENV = 'development'
@@ -27,3 +28,4 @@ class DevConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = environ.get("DEV_DATABASE_URI")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SCHEDULER_API_ENABLED = True
