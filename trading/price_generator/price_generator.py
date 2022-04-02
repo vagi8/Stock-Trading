@@ -1,5 +1,5 @@
-from .models import db, MarketHours, MarketHolidays
-from ..admin.models import Stocks
+from ..admin.models import db, Stocks, MarketHours, MarketHolidays
+from ..user.models import LimitTransaction
 from .. import scheduler
 from datetime import datetime
 from sqlalchemy import extract
@@ -57,6 +57,13 @@ def job1():
             print("Stock Market open only in admin specified hours")
         else:
             print("Stock Market is closed today as a holiday")
+
+
+@scheduler.task('interval', id='job_2', seconds=5, misfire_grace_time=900)
+def job2():
+    with scheduler.app.app_context():
+        transactions = LimitTransaction.query
+
 
 
 def priceTriggers(stock, current_date):

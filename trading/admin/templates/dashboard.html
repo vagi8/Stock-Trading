@@ -111,139 +111,22 @@
 								</div>
 								<div class="tab-pane" id="marketHours" role="tabpanel" aria-expanded="false">
 									<div class="p-15">
-										<form id="edit_app_settings">
-											<div class="side-headings"><h2>General Settings</h2></div>
+										<form id="form_markHours" action="{{url_for('admin_bp.changeMarketHours')}}" method="post">
+											<div class="side-headings"><h2>Current Market Hours - {{marketHours.startHour}} to {{marketHours.endHour}}</h2></div>
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<label for="DateFormat">Data Format</label>
-														<select required class=" custom-select form-control" id="DateFormat" name="DateFormat">
-															<option value="DD/MM/YYYY">DD/MM/YYYY</option>
-															<option value="MM/DD/YYYY">MM/DD/YYYY</option>
-															<option value="YYYY/MM/DD">YYYY/MM/DD</option>
-														</select>
+														{{marketHoursform.startHour.label}}
+														{{marketHoursform.startHour(type='time',class='form-control')}}
 													</div>
-												</div>
-												<div class="col-md-6">
 													<div class="form-group">
-														<label for="NumberSeparator">Number Separator</label>
-														<input required type="text" class="form-control" id="NumberSeparator" name="NumberSeparator">
+														{{marketHoursform.endHour.label}}
+														{{marketHoursform.endHour(type='time',class='form-control')}}
 													</div>
 												</div>
 											</div>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="form-group">
-														<label for="Language">Language</label>
-														<select required class="custom-select form-control" id="Language" name="Language">
-															<option value="English">English</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<div class="side-headings"><h2>Campaign Media Settings</h2></div>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="form-group">
-														<label for="MaxMediaSize">Maximum Media Size (In MB)</label>
-														<input required type="number" min="0.01" class="form-control" id="MaxMediaSize" name="MaxMediaSize">
-													</div>
-												</div>
-											</div>
-											<div class="side-headings"><h2>Contacts Form Settings</h2></div>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="DefaultCountryCode">Default Country Code</label>
-														<input required type="number" min="0" class="form-control" id="DefaultCountryCode" name="DefaultCountryCode">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="MobileNoLength">Length of Mobile Number</label>
-														<input required type="number" min="1" class="form-control" id="MobileNoLength" name="MobileNoLength">
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="IDNoType">Identification Number Type</label>
-														<select required class="custom-select form-control" id="IDNoType" name="IDNoType">
-															<option value="number">Number Only</option>
-															<option value="text">Alpha Numeric</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="IDNoLength">Length of Identification Number</label>
-														<input required type="number" class="form-control" id="IDNoLength" name="IDNoLength">
-													</div>
-												</div>
-											</div>
-											<div class="side-headings">
-												<h2>Out of Office</h2>
-												<label style="margin: 11px;" class="switch">
-													<input id="OOF" name="OOF" type="checkbox">
-													<span class="slider round"></span>
-												</label>
-											</div>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="form-group">
-														<label for="OOFM">Out of Office Message</label>
-														<textarea id="OOFM" name="OOFM" readonly  class="form-control"></textarea>
-													</div>
-												</div>
-											</div>
-											<div class="side-headings"><h2>Work Times</h2></div>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="WorkWeekStartDay">Work Week Start Day</label>
-														<select required class="custom-select form-control" id="WorkWeekStartDay" name="WorkWeekStartDay">
-															<option value="Monday">Monday</option>
-															<option value="Tuesday">Tuesday</option>
-															<option value="Wednesday">Wednesday</option>
-															<option value="Thursday">Thursday</option>
-															<option value="Friday">Friday</option>
-															<option value="Saturday">Saturday</option>
-															<option value="Sunday">Sunday</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="WorkWeekEndDay">Work Week End Day</label>
-														<select required class="custom-select form-control" id="WorkWeekEndDay" name="WorkWeekEndDay">
-															<option value="Monday">Monday</option>
-															<option value="Tuesday">Tuesday</option>
-															<option value="Wednesday">Wednesday</option>
-															<option value="Thursday">Thursday</option>
-															<option value="Friday">Friday</option>
-															<option value="Saturday">Saturday</option>
-															<option value="Sunday">Sunday</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="WorkHoursStartFrom">Working Hours Starts From</label>
-														<input required class="form-control" id="WorkHoursStartFrom" name="WorkHoursStartFrom" type="time">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="WorkHoursEndBy">Working Hours Ends By</label>
-														<input required class="form-control" id="WorkHoursEndBy" name="WorkHoursEndBy" type="time">
-													</div>
-												</div>
-											</div>
+											{{marketHoursform.submit(class="btn btn-block mt-10 btn-success")}}
 										</form>
-										<div id="submit_details"  class="btn btn-pure btn-primary float-right">Save</div>
 									</div>
 								</div>
 								<div class="tab-pane" id="marketSch" role="tabpanel" aria-expanded="false">

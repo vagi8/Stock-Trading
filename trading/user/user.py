@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, make_response, request, jsonify, r
 from flask_login import login_required, current_user
 from sqlalchemy.exc import IntegrityError
 from .models import Portfolio, CashTransaction, db
-from .forms import AddToPortfolio, AddCashTran
+from .forms import AddCashTran, BuySellLimit
 from ..admin.models import Stocks
 import datetime
 # Blueprint Configuration
@@ -21,7 +21,7 @@ def dashboard():
     return render_template("/userDashboard.html", balance=current_user.balance, portfolio=portfolio)
 
 
-@user_bp.route("/cash", methods=['GET', 'POST'])
+@user_bp.route("/cash", methods=['GET'])
 @login_required
 def cash():
     form = AddCashTran()
@@ -29,7 +29,7 @@ def cash():
     return render_template("/cash.html", balance=current_user.balance, form=form, error=error)
 
 
-@user_bp.route("/cashDeposit", methods=['GET', 'POST'])
+@user_bp.route("/cashDeposit", methods=['POST'])
 @login_required
 def cashdeposit():
     form = AddCashTran()
@@ -57,7 +57,7 @@ def cashdeposit():
     return redirect(url_for('user_bp.cash',error=error))
 
 
-@user_bp.route("/cashWithdraw", methods=['GET', 'POST'])
+@user_bp.route("/cashWithdraw", methods=['POST'])
 @login_required
 def cashwithdraw():
     form = AddCashTran()
@@ -92,3 +92,11 @@ def cashwithdraw():
 def viewstocks():
     stocksData = Stocks.query
     return render_template("/stocks.html", stocks=stocksData)
+
+@user_bp.route("/buy_sell", methods = ['GET','POST'])
+@login_required
+def buy_sell():
+    form=BuySellLimit()
+    error=''
+    return render_template('/buy_sell.html', error=error, balance=current_user.balance, form=form)
+

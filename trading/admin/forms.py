@@ -41,3 +41,24 @@ class CreateStock(FlaskForm):
         'Last Traded Day'
     )
     submit = SubmitField('Create')
+
+
+class UpdateMarketHours(FlaskForm):
+    startHour = DateTimeField(
+        'Market Start Hour',
+        validators=[DataRequired()]
+    )
+    endHour = DateTimeField(
+        'Market End Hour',
+        validators=[DataRequired()]
+    )
+    submit = SubmitField('Update')
+
+
+class CreateMarketHolidays(FlaskForm):
+    day = DateTimeField(
+        'Market Holiday',
+        validators=[DataRequired()]
+    )
+    submit = SubmitField('Add Holiday')
+

@@ -31,7 +31,7 @@ class User(UserMixin, db.Model):
         primary_key=False,
         unique=False,
         nullable=False
-	)
+    )
     balance = db.Column(
         db.Integer,
         primary_key=False,
@@ -44,18 +44,23 @@ class User(UserMixin, db.Model):
         unique=False,
         nullable=False
     )
+
     def set_password(self, password):
         """Create hashed password."""
         self.password = generate_password_hash(
             password,
             method='sha256'
         )
-    def set_name(self,name):
-        self.name=name
-    def set_role(self,role):
-        self.role=role
-    def set_status(self,status):
-        self.Status=status
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_role(self, role):
+        self.role = role
+
+    def set_status(self, status):
+        self.Status = status
+
     def check_password(self, password):
         """Check hashed password."""
         return check_password_hash(self.password, password)

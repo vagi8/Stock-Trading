@@ -1,8 +1,10 @@
 """Sign-up & log-in forms."""
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, IntegerField, FloatField, DateTimeField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, IntegerField, FloatField, DateTimeField, RadioField
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, NumberRange
 from .models import *
+from ..admin.models import Stocks
 import datetime
 
 
@@ -44,3 +46,57 @@ class AddCashTran(FlaskForm):
     )
 
     submit = SubmitField('Submit')
+
+
+class BuySellMarket(FlaskForm):
+    stockID = QuerySelectField(
+        'Stocks',
+        query_factory=lambda: Stocks.query,
+        get_pk=lambda a: a.id,
+        get_label=lambda a: a.ticker,
+        validators=[DataRequired()]
+    )
+    orderVolume = IntegerField(
+        'No of Units',
+        validators=[DataRequired()]
+    )
+    transactionType = SelectField(
+        'Buy/Sell',
+        choices=[('Buy', 'Buy'), ('Sell', 'Sell')]
+    )
+    orderType = SelectField(
+        'Order Type',
+        choices=[('Market', 'Market'), ('Limit', 'Limit')]
+    )
+    submit = SubmitField('Buy/Sell')
+
+
+class BuySellLimit(FlaskForm):
+    stockID = QuerySelectField(
+        'Stocks',
+        query_factory=lambda: Stocks.query,
+        get_pk=lambda a: a.id,
+        get_label=lambda a: a.ticker,
+        validators=[DataRequired()]
+    )
+    orderVolume = IntegerField(
+        'No of Units',
+        validators=[DataRequired(),NumberRange(min=1, message="Minimum of one stock for a valid transaction")]
+    )
+    transactionType = SelectField(
+        'Buy/Sell',
+        choices=[('Buy', 'Buy '), ('Sell', 'Sell')]
+    )
+    orderType = RadioField(
+        'Order Type',
+        choices=[('Market', 'Market'), ('Limit', 'Limit')]
+    )
+    limitPrice = FloatField(
+        'Limit Price',
+        validators=[NumberRange(min=0.001, message="Minimum of 0.001 is the limit price")]
+    )
+    limitExpiry = DateTimeField(
+        'Limit Order Expiry'
+    )
+    submit = SubmitField('Submit Order')
+
