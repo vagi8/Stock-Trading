@@ -1,12 +1,4 @@
 .sql
 .vscode
-camp_temp
-backup_1208.sql
-commands_git.txt
-daily tasks.txt
-db_changes.md
-Database Xcallibre_DOA_MP_FarmerRegister_Export_V1_30_04_2020 (2).xlsx
-azure cresentials.txt
-farmers_template_loaded_data.xlsx
-farmers_template_loaded_data_temp.xlsx
+.idea
 __pycache__/

@@ -50,4 +50,3 @@ wrapt==1.11.1
 WTForms==2.1
 xlrd==1.2.0
 Flask-APScheduler
-flask-socketio
