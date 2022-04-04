@@ -1,7 +1,7 @@
 ##Stock Trading Platform 
  Author - Vageeshan
 
-![User Home](https://github.com/vagi8/Stock-Trading/blob/mian/user_home.PNG?raw=true)
+![User Home](https://github.com/vagi8/Stock-Trading/blob/main/user_home.PNG?raw=true)
 
 ## Installation
  - Install python (recommended - V3.7)
@@ -25,4 +25,4 @@ To run project in production flask, in `.trading/__init__.py` use line 14,15 to 
 
 ### Architecture
 
-![Architecture](https://github.com/vagi8/Stock-Trading/blob/mian/architecture.jpeg?raw=true)
+![Architecture](https://github.com/vagi8/Stock-Trading/blob/main/architecture.jpeg?raw=true)
