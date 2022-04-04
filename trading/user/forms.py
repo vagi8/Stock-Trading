@@ -35,7 +35,8 @@ class AddCashTran(FlaskForm):
     )
     transactionType = SelectField(
         'Type',
-        choices=[('Deposit', 'Deposit'), ('Withdraw', 'Withdraw')]
+        # choices=[('Deposit', 'Deposit'), ('Withdraw', 'Withdraw')]
+        choices=[('Cash Deposit', 'Cash Deposit'), ('Cash Withdraw', 'Cash Withdraw')]
     )
     amount = IntegerField(
         'Amount (USD)',

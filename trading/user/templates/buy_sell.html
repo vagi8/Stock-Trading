@@ -31,8 +31,8 @@
 					</div>
 					<div class="box-body" id="loader_placer">
 						<div class="p-15">
-                            <form action="{{ url_for('user_bp.buy_sell') }}" method="post" id="form-element">
-                                {{form.csrf_token}}
+                            <form id="form_buy_sell">
+								{{form.csrf_token}}
                                 <div class="side-headings"><h2>Buy / Sell</h2></div>
                                 <div class="row col-md-12 form-group has-feedback">
                                     {{form.stockID.label}}
@@ -81,12 +81,12 @@
                                 	</div>
 								</div>
 								<div id="limitdiv"></div>
-                                <div class="text-danger text-bold">
+                                <div id="error" class="text-danger text-bold">
                                     {{ error }}
                                   </div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        {{form.submit(class="btn btn-block mt-10 btn-success")}}
+										<div type="button" id="form_submit" class="btn btn-block mt-10 btn-success" >Submit Order</div>
                                       </div>
                                   </div>
                             </form>

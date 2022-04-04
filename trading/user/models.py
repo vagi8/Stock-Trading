@@ -103,6 +103,10 @@ class StockTransaction(db.Model):
         nullable=False,
         unique=False
     )
+    log = db.Column(
+        db.String(255),
+        nullable=True,
+    )
     createdDateTime = db.Column(
         db.DateTime,
         default=db.func.now(),

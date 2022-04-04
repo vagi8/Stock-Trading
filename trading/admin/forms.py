@@ -57,7 +57,7 @@ class UpdateMarketHours(FlaskForm):
 
 class CreateMarketHolidays(FlaskForm):
     day = DateTimeField(
-        'Market Holiday',
+        'Add Market Holiday',
         validators=[DataRequired()]
     )
     submit = SubmitField('Add Holiday')

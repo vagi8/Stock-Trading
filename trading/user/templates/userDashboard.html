@@ -36,24 +36,13 @@
 					  <table id="portfolio_table" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
 						<thead>
                             <tr>
+								<th>ID</th>
                                 <th>Company Name</th>
                                 <th>Ticker</th>
                                 <th>Units</th>
                                 <th>Avg Purchase Price</th>
-								<th>Profit</th>
                             </tr>
 						</thead>
-						  <tbody>
-						  {% for stock in portfolio %}
-							<tr>
-							  <td>{{ stock.companyName }}</td>
-							  <td>{{ stock.ticker }}</td>
-							  <td>{{ stock.units }}</td>
-							  <td>{{ stock.avgPrice }}</td>
-							  <td>{{ stock.profitPrice }}</td>
-							</tr>
-						  {% endfor %}
-						 </tbody>
 					</table>
 					</div>
 				</div>

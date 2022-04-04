@@ -66,7 +66,7 @@ def bot_auth(request):
         return False
 
 @controller_bp.route("/get/farmers/<farmerid>",methods=['GET'])
-#@login_required
+# @login_required
 def send_farmers(farmerid):
     filters=None
     broadcastlog=''
