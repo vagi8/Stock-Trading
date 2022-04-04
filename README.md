@@ -1,4 +1,5 @@
-##Stock Trading Platform 
+## Stock Trading Platform 
+ 
  Author - Vageeshan
 
 ![User Home](https://github.com/vagi8/Stock-Trading/blob/main/user_home.PNG?raw=true)
