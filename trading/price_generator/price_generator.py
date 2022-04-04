@@ -1,11 +1,14 @@
-from ..admin.models import db, Stocks, MarketHours, MarketHolidays
-from ..user.models import StockTransaction, LimitTransaction, Portfolio, CashTransaction
-from ..auth.models import User
-from .. import scheduler
-from datetime import datetime
-from sqlalchemy import extract, or_, and_
 import random
+from datetime import datetime
+
+from sqlalchemy import extract, or_, and_
+
+from .. import scheduler
+from ..admin.models import db, Stocks, MarketHours, MarketHolidays
+from ..auth.models import User
+from ..user.models import StockTransaction, LimitTransaction, Portfolio, CashTransaction
 from ..user.user import isMarketOpen
+
 
 def create_market_settings_data():
     if len(MarketHours.query.all()) == 0:

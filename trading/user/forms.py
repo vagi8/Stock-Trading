@@ -1,11 +1,10 @@
 """Sign-up & log-in forms."""
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, IntegerField, FloatField, DateTimeField, RadioField
+from wtforms import SubmitField, SelectField, IntegerField, FloatField, DateTimeField, RadioField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, NumberRange
-from .models import *
+from wtforms.validators import DataRequired, NumberRange
+
 from ..admin.models import Stocks
-import datetime
 
 
 class AddToPortfolio(FlaskForm):

@@ -1,7 +1,7 @@
 """Database models."""
 # from flask_sqlalchemy import SQLAlchemy
 from .. import db
-from datetime import datetime
+
 
 class Portfolio(db.Model):
     __tablename__ = 'portfolio'

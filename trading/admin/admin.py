@@ -1,15 +1,14 @@
 import json
+from datetime import datetime
 
 import pandas as pd
 from flask import Blueprint, render_template, make_response, request, jsonify, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import login_required
 from sqlalchemy import extract
-
-from .models import Stocks, db, MarketHours, MarketHolidays
-from .forms import CreateStock, UpdateMarketHours, CreateMarketHolidays
 from sqlalchemy.exc import IntegrityError
-from datetime import datetime
-from flask_socketio import SocketIO
+
+from .forms import CreateStock, UpdateMarketHours, CreateMarketHolidays
+from .models import Stocks, db, MarketHours, MarketHolidays
 
 # Blueprint Configuration
 admin_bp = Blueprint(

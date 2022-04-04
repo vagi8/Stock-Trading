@@ -1,8 +1,7 @@
 """Sign-up & log-in forms."""
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, IntegerField, FloatField, DateTimeField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, NumberRange
-from .models import *
+from wtforms import StringField, SubmitField, IntegerField, FloatField, DateTimeField
+from wtforms.validators import DataRequired
 
 
 class CreateStock(FlaskForm):

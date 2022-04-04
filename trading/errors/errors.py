@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template,abort
+from flask import Blueprint, render_template
 from flask import current_app as app
-from flask_login import login_required,current_user
 
 # Blueprint Configuration
 errors_bp = Blueprint(
@@ -24,10 +23,6 @@ def error_403(e):
 @app.errorhandler(500)
 def error_500(e):
     return render_template('/error_500.html')
-
-# @app.errorhandler(503)
-# def error_503(e):
-#     return render_template('/error_503.html')
 
 @app.errorhandler(503)
 def maintenance(e):
