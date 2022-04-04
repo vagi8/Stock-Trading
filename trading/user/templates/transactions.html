@@ -1,108 +1,110 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-	<!-- Bootstrap 4.0-->
-	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- Bootstrap 4.0-->
+<link href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap extend-->
-	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+<!-- Bootstrap extend-->
+<link href="/static/css/bootstrap-extend.css" rel="stylesheet">
 
-	<!-- Theme style -->
-	<link rel="stylesheet" href="/static/css/master_style.css">
-	<meta id="my-data" data-userID="{{userID}}">
-	<!-- UltimatePro Admin skins -->
-	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
-	<link rel="stylesheet" href="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css">
+<!-- Theme style -->
+<link href="/static/css/master_style.css" rel="stylesheet">
+<meta data-userID="{{userID}}" id="my-data">
+<!-- UltimatePro Admin skins -->
+<link href="/static/css/skins/_all-skins.css" rel="stylesheet">
+<link href="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-	  <div class="container">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div class="container">
 
-		<!-- Main content -->
-		<section class="content">
-		  <div class="row">
-			<div class="col-12">
-				<div class="box box-default">
-					<div class="box-header with-border">
-					  	<h3 class="box-title">Stock Transaction</h3>
-					</div>
-					<div class="box-body">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Stock Transaction</h3>
+                        </div>
+                        <div class="box-body">
 
-									<div class="p-15">
-										<div class="table-responsive">
-											<table id="table_subscription1" class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100">
-												<thead>
-													<tr>
-														<th>ID</th>
-														<th>Stock Ticker</th>
-														<th>Transaction Type</th>
-														<th>Order Type</th>
-														<th>Order Volume</th>
-														<th>Status</th>
-														<th>Limit Price</th>
-														<th>Limit Expiry</th>
-														<th>Log</th>
-														<th>Action</th>
-													</tr>
-												</thead>
-											</table>
-										</div>
-									</div>
-					</div>
-				</div>
-			</div>
-		  </div>
+                            <div class="p-15">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100"
+                                           id="table_subscription1">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Stock Ticker</th>
+                                            <th>Transaction Type</th>
+                                            <th>Order Type</th>
+                                            <th>Order Volume</th>
+                                            <th>Status</th>
+                                            <th>Limit Price</th>
+                                            <th>Limit Expiry</th>
+                                            <th>Log</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-		  <div class="row">
-			<div class="col-12">
-				<div class="box box-default">
-					<div class="box-header with-border">
-					  	<h3 class="box-title">Cash Transaction</h3>
-					</div>
-					<div class="box-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Cash Transaction</h3>
+                        </div>
+                        <div class="box-body">
 
-									<div class="p-15">
-										<div class="table-responsive">
-											<table id="table_subscription2" class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100">
-												<thead>
-													<tr>
-														<th>ID</th>
-														<th>Transaction Type</th>
-														<th>Amount</th>
-														<th>Date Time</th>
-													</tr>
-												</thead>
-											</table>
-										</div>
-									</div>
-					</div>
-				</div>
-			</div>
-		  </div>
-		</section>
-	  </div>
-  </div>
-  <!-- /.content-wrapper -->
+                            <div class="p-15">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover display nowrap margin-top-10 w-p100"
+                                           id="table_subscription2">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Transaction Type</th>
+                                            <th>Amount</th>
+                                            <th>Date Time</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- /.content-wrapper -->
 {% endblock %}
 
 {% block scripts %}
-	<!-- popper -->
-	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+<!-- popper -->
+<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
 
-	<!-- Bootstrap 4.0-->
-	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap 4.0-->
+<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<!-- SlimScroll -->
-	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- SlimScroll -->
+<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
-	<!-- FastClick -->
-	<!-- <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script> -->
-	<script src="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+<!-- FastClick -->
+<!-- <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script> -->
+<script src="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
 
-	<!-- UltimatePro Admin App -->
-	<script src="/static/js/template.js"></script>
-	<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
-	<script src="/static/js/userTransactions.js"></script>
+<!-- UltimatePro Admin App -->
+<script src="/static/js/template.js"></script>
+<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+<script src="/static/js/userTransactions.js"></script>
 {% endblock %}

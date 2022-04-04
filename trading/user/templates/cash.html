@@ -1,123 +1,133 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-	<!-- Bootstrap 4.0-->
-	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
-	
-	<!-- Bootstrap extend-->
-	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+<!-- Bootstrap 4.0-->
+<link href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Theme style -->
-	<link rel="stylesheet" href="/static/css/master_style.css">
+<!-- Bootstrap extend-->
+<link href="/static/css/bootstrap-extend.css" rel="stylesheet">
 
-	<!-- UltimatePro Admin skins -->
-	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
-	<link rel="stylesheet" href="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css">
+<!-- Theme style -->
+<link href="/static/css/master_style.css" rel="stylesheet">
+
+<!-- UltimatePro Admin skins -->
+<link href="/static/css/skins/_all-skins.css" rel="stylesheet">
+<link href="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css" rel="stylesheet">
 {% endblock %}
-  
-{% block content %}
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-	  <div class="container">
 
-		<!-- Main content -->
-		<section class="content">
-		  <div class="row">
-			<div class="col-12">
-				<div class="box box-default">
-					<div class="box-header with-border">
-					  	<h3 class="box-title">Current Balance (USD) : {{balance}}</h3>
-					</div>
-					<div class="box-body">
-						<div class="vtabs customvtab" id="loader_placer">
-							<ul class="nav nav-tabs tabs-vertical" role="tablist">
-								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#deposit" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ion-home"></i></span> <span class="hidden-xs-down">Deposit Cash</span> </a> </li>
-								<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#withdraw" role="tab" aria-expanded="false"><span class="hidden-sm-up"><i class="ion-person"></i></span> <span class="hidden-xs-down">Withdraw Cash</span></a> </li>
-							</ul>
-							<!-- Tab panes -->
-							<div class="tab-content" id="tab_content" style="display:none;">
-								<div class="tab-pane active" id="deposit" role="tabpanel" aria-expanded="true">
-									<div class="p-15">
-										<form  action="{{ url_for('user_bp.cashdeposit') }}" method="post" id="form-element">
-											{{form.csrf_token}}
-											<div class="side-headings"><h2>Deposit Cash</h2></div>
-											<div class="row col-md-12 form-group has-feedback">
-												{{form.amount.label}}
-												{{form.amount(class="form-control",min="1")}}
-												{% if form.amount.errors %}
-													<ul class="text-danger text-bold">
-													{% for error in form.amount.errors %}
-														<li>{{ error }}</li>
-													{% endfor %}
-													</ul>
-												{% endif %}
-											</div>
-											<div class="text-danger text-bold">
-												{{ error }}
-											  </div>
-											<div class="row">
-												<div class="col-12 text-center">
-													{{form.submit(class="btn btn-block mt-10 btn-success",value="Deposit")}}
-												  </div>
-											  </div>
-										</form>
-									</div>
-								</div>
-								<div class="tab-pane" id="withdraw" role="tabpanel" aria-expanded="false">
-									<div class="p-15">
-										<form  action="{{ url_for('user_bp.cashwithdraw') }}" method="post" id="form-element">
-											{{form.csrf_token}}
-											<div class="side-headings"><h2>Withdraw Cash</h2></div>
-											<div class="row col-md-12 form-group has-feedback">
-												{{form.amount.label}}
-												{{form.amount(class="form-control",max=" {{balance}} ")}}
-												{% if form.amount.errors %}
-													<ul class="text-danger text-bold">
-													{% for error in form.amount.errors %}
-														<li>{{ error }}</li>
-													{% endfor %}
-													</ul>
-												{% endif %}
-											</div>
-											<div class="text-danger text-bold">
-												{{ error }}
-											  </div>
-											<div class="row">
-												<div class="col-12 text-center">
-													{{form.submit(class="btn btn-block mt-10 btn-success",value="Withdraw")}}
-												  </div>
-											  </div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>       
-			</div>
-		  </div>
-		</section>
-	  </div>
-  </div>
-  <!-- /.content-wrapper -->
-{% endblock %}  
+{% block content %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div class="container">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Current Balance (USD) : {{balance}}</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="vtabs customvtab" id="loader_placer">
+                                <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                    <li class="nav-item"><a aria-expanded="true" class="nav-link active" data-toggle="tab"
+                                                            href="#deposit" role="tab"><span
+                                            class="hidden-sm-up"><i class="ion-home"></i></span> <span
+                                            class="hidden-xs-down">Deposit Cash</span> </a></li>
+                                    <li class="nav-item"><a aria-expanded="false" class="nav-link" data-toggle="tab"
+                                                            href="#withdraw" role="tab"><span class="hidden-sm-up"><i
+                                            class="ion-person"></i></span> <span
+                                            class="hidden-xs-down">Withdraw Cash</span></a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content" id="tab_content" style="display:none;">
+                                    <div aria-expanded="true" class="tab-pane active" id="deposit" role="tabpanel">
+                                        <div class="p-15">
+                                            <form action="{{ url_for('user_bp.cashdeposit') }}" id="form-element"
+                                                  method="post">
+                                                {{form.csrf_token}}
+                                                <div class="side-headings"><h2>Deposit Cash</h2></div>
+                                                <div class="row col-md-12 form-group has-feedback">
+                                                    {{form.amount.label}}
+                                                    {{form.amount(class="form-control",min="1")}}
+                                                    {% if form.amount.errors %}
+                                                    <ul class="text-danger text-bold">
+                                                        {% for error in form.amount.errors %}
+                                                        <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="text-danger text-bold">
+                                                    {{ error }}
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        {{form.submit(class="btn btn-block mt-10
+                                                        btn-success",value="Deposit")}}
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div aria-expanded="false" class="tab-pane" id="withdraw" role="tabpanel">
+                                        <div class="p-15">
+                                            <form action="{{ url_for('user_bp.cashwithdraw') }}" id="form-element"
+                                                  method="post">
+                                                {{form.csrf_token}}
+                                                <div class="side-headings"><h2>Withdraw Cash</h2></div>
+                                                <div class="row col-md-12 form-group has-feedback">
+                                                    {{form.amount.label}}
+                                                    {{form.amount(class="form-control",max=" {{balance}} ")}}
+                                                    {% if form.amount.errors %}
+                                                    <ul class="text-danger text-bold">
+                                                        {% for error in form.amount.errors %}
+                                                        <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="text-danger text-bold">
+                                                    {{ error }}
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        {{form.submit(class="btn btn-block mt-10
+                                                        btn-success",value="Withdraw")}}
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- /.content-wrapper -->
+{% endblock %}
 
 {% block scripts %}
-	<!-- popper -->
-	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
-	
-	<!-- Bootstrap 4.0-->
-	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	
-	<!-- SlimScroll -->
-	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	
-	<!-- FastClick -->
-	<!-- <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script> -->
-	<script src="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
-	
-	<!-- UltimatePro Admin App -->
-	<script src="/static/js/template.js"></script>
-	<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
-	<script src="/static/js/adminDashboard.js"></script>
+<!-- popper -->
+<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+
+<!-- Bootstrap 4.0-->
+<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- SlimScroll -->
+<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- FastClick -->
+<!-- <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script> -->
+<script src="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+
+<!-- UltimatePro Admin App -->
+<script src="/static/js/template.js"></script>
+<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+<script src="/static/js/adminDashboard.js"></script>
 {% endblock %}

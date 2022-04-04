@@ -1,83 +1,84 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+<link href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Data Table-->
-	<link rel="stylesheet" type="text/css" href="/static/assets/vendor_components/datatable/datatables.min.css"/>
+<!-- Data Table-->
+<link href="/static/assets/vendor_components/datatable/datatables.min.css" rel="stylesheet" type="text/css"/>
 
-	<!-- Bootstrap extend-->
-	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+<!-- Bootstrap extend-->
+<link href="/static/css/bootstrap-extend.css" rel="stylesheet">
 
-	<!-- Theme style -->
-	<link rel="stylesheet" href="/static/css/master_style.css">
+<!-- Theme style -->
+<link href="/static/css/master_style.css" rel="stylesheet">
 
-	<!-- UltimatePro Admin skins -->
-	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
+<!-- UltimatePro Admin skins -->
+<link href="/static/css/skins/_all-skins.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-  <div class="content-wrapper">
-	  <div class="container">
-		<section class="content">
-		  <div class="row">
-			<div class="col-12">
-			  <div class="box">
-				<div class="box-header with-border">
-<!--				  <h3 class="box-title">Portfoio</h3>-->
-<!--				  <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>-->
-					<div class="d-flex" style="margin-left: auto;">
-						<h3 class="box-title">Portfolio</h3>
-						<h3 style="margin-left: auto !important;">Cash Balance (USD) : {{balance}}</h3>
-					</div>
-				</div>
-				<div class="box-body" id="loader_placer">
-					<div class="table-responsive">
-					  <table id="portfolio_table" class="table table-bordered table-hover display nowrap margin-top-10 w-p100">
-						<thead>
-                            <tr>
-								<th>ID</th>
-                                <th>Company Name</th>
-                                <th>Ticker</th>
-                                <th>Units</th>
-                                <th>Avg Purchase Price</th>
-                            </tr>
-						</thead>
-					</table>
-					</div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</section>
+<div class="content-wrapper">
+    <div class="container">
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <!--				  <h3 class="box-title">Portfoio</h3>-->
+                            <!--				  <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>-->
+                            <div class="d-flex" style="margin-left: auto;">
+                                <h3 class="box-title">Portfolio</h3>
+                                <h3 style="margin-left: auto !important;">Cash Balance (USD) : {{balance}}</h3>
+                            </div>
+                        </div>
+                        <div class="box-body" id="loader_placer">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover display nowrap margin-top-10 w-p100"
+                                       id="portfolio_table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Company Name</th>
+                                        <th>Ticker</th>
+                                        <th>Units</th>
+                                        <th>Avg Purchase Price</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-	  </div>
-  </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
-	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
 
-	<!-- Bootstrap 4.0-->
-	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap 4.0-->
+<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<!-- SlimScroll -->
-	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- SlimScroll -->
+<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
-	<!-- FastClick -->
-	<script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+<!-- FastClick -->
+<script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script>
 
-	<!-- UltimatePro Admin App -->
-	<script src="/static/js/template.js"></script>
+<!-- UltimatePro Admin App -->
+<script src="/static/js/template.js"></script>
 
-	<!-- UltimatePro Admin for demo purposes -->
-	<script src="/static/js/demo.js"></script>
+<!-- UltimatePro Admin for demo purposes -->
+<script src="/static/js/demo.js"></script>
 
-	<script src="/static/js/userDashboard.js"></script>
+<script src="/static/js/userDashboard.js"></script>
 
-	<!-- This is data table -->
-    <script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+<!-- This is data table -->
+<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
 
-	<!-- UltimatePro Admin for Data Table -->
+<!-- UltimatePro Admin for Data Table -->
 
 {% endblock %}

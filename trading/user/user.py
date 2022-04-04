@@ -37,7 +37,11 @@ def transaction_history():
 
 @user_bp.route("/get/portfolio", methods=['GET'])
 def get_portfolio():
-    portfolio = Portfolio.query.join(Stocks, Portfolio.stockID == Stocks.id).with_entities(Portfolio.id,Stocks.companyName,Stocks.ticker,Portfolio.units,Portfolio.purchasePrice)
+    portfolio = Portfolio.query.join(Stocks, Portfolio.stockID == Stocks.id).with_entities(Portfolio.id,
+                                                                                           Stocks.companyName,
+                                                                                           Stocks.ticker,
+                                                                                           Portfolio.units,
+                                                                                           Portfolio.purchasePrice)
     portfolio_data = pd.read_sql(portfolio.statement, portfolio.session.bind)
     portfolio_data = json.loads(portfolio_data.to_json(orient='records'))
     headers = {"Content-Type": "application/json"}
@@ -70,19 +74,21 @@ def get_cash_history(userid):
     return make_response(jsonify(cash_data), 200, headers)
 
 
-@user_bp.route("/post/cancel_transaction/<tranid>",methods=['POST'])
+@user_bp.route("/post/cancel_transaction/<tranid>", methods=['POST'])
 def cancel_transaction(tranid):
-    tranid=int(tranid)
+    tranid = int(tranid)
     headers = {"Content-Type": "application/json"}
-    transaction=LimitTransaction.query.filter(LimitTransaction.transactionID==tranid)
+    transaction = LimitTransaction.query.filter(LimitTransaction.transactionID == tranid)
     if len(transaction.all()) == 0:
         return make_response(jsonify({'Error': 'No such limit order exists '}), 500, headers)
-    elif len(transaction.all())>1:
+    elif len(transaction.all()) > 1:
         return make_response(jsonify({'Error': 'Internal error'}), 500, headers)
     else:
-        StockTransaction.query.filter(StockTransaction.id==tranid).update({StockTransaction.status: 'cancelled',StockTransaction.log:'Cancelled by user'})
+        StockTransaction.query.filter(StockTransaction.id == tranid).update(
+            {StockTransaction.status: 'cancelled', StockTransaction.log: 'Cancelled by user'})
         db.session.commit()
         return make_response(jsonify({'Error': 'Order has been cancelled'}), 200, headers)
+
 
 @user_bp.route("/cash", methods=['GET'])
 @login_required
@@ -195,7 +201,7 @@ def create_market_order(form):
                 row = Portfolio.query.filter_by(userID=current_user.id, stockID=form.stockID.data.id).first()
 
                 row.purchasePrice = ((row.units * row.purchasePrice) + (
-                            form.orderVolume.data * form.stockID.data.currentPrice)) / (
+                        form.orderVolume.data * form.stockID.data.currentPrice)) / (
                                             form.orderVolume.data + row.units)
                 row.units += form.orderVolume.data
             else:
@@ -214,7 +220,7 @@ def create_market_order(form):
                     current_user.balance - (form.stockID.data.currentPrice * form.orderVolume.data), 3)
                 status = 'executed'
             except Exception as e:
-                log=str(e)
+                log = str(e)
                 status = 'failed'
 
         elif form.transactionType.data == 'Sell':
@@ -241,13 +247,13 @@ def create_market_order(form):
                     current_user.balance + (form.stockID.data.currentPrice * form.orderVolume.data), 3)
                 status = 'executed'
             except Exception as e:
-                log=str(e)
+                log = str(e)
                 status = 'failed'
 
         else:
             return make_response(jsonify({'Error': 'Invalid Transaction Type'}), 200, headers)
     except Exception as e:
-        log=str(e)
+        log = str(e)
         status = 'failed'
 
     tran = StockTransaction(
@@ -325,6 +331,7 @@ def post_buy_sell():
         return create_limit_order(form)
     else:
         return make_response(jsonify({'Error': 'Invalid Order Type'}), 500, headers)
+
 
 def isMarketOpen():
     current_date = datetime.now()

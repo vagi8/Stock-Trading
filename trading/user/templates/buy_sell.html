@@ -1,122 +1,124 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-	<!-- Bootstrap 4.0-->
-	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- Bootstrap 4.0-->
+<link href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Bootstrap extend-->
-	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
+<!-- Bootstrap extend-->
+<link href="/static/css/bootstrap-extend.css" rel="stylesheet">
 
-	<!-- Theme style -->
-	<link rel="stylesheet" href="/static/css/master_style.css">
+<!-- Theme style -->
+<link href="/static/css/master_style.css" rel="stylesheet">
 
-	<!-- UltimatePro Admin skins -->
-	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">
-	<link rel="stylesheet" href="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css">
+<!-- UltimatePro Admin skins -->
+<link href="/static/css/skins/_all-skins.css" rel="stylesheet">
+<link href="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-	  <div class="container">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div class="container">
 
-		<!-- Main content -->
-		<section class="content">
-		  <div class="row">
-			<div class="col-12">
-				<div class="box box-default">
-					<div class="box-header with-border">
-					  	<h3 class="box-title">Current Balance (USD) : {{balance}}</h3>
-                        <!-- add button to add balance -->
-					</div>
-					<div class="box-body" id="loader_placer">
-						<div class="p-15">
-                            <form id="form_buy_sell">
-								{{form.csrf_token}}
-                                <div class="side-headings"><h2>Buy / Sell</h2></div>
-                                <div class="row col-md-12 form-group has-feedback">
-                                    {{form.stockID.label}}
-                                    {{form.stockID(class="form-control")}}
-                                    {% if form.stockID.errors %}
-                                        <ul class="text-danger text-bold">
-                                        {% for error in form.stockID.errors %}
-                                            <li>{{ error }}</li>
-                                        {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </div>
-								<div class="row">
-									<div class="col-md-6 form-group has-feedback">
-										{{form.transactionType.label}}
-										{{form.transactionType(class="form-control")}}
-										{% if form.transactionType.errors %}
-											<ul class="text-danger text-bold">
-											{% for error in form.transactionType.errors %}
-												<li>{{ error }}</li>
-											{% endfor %}
-											</ul>
-										{% endif %}
-                                	</div>
-									<div class="col-md-6 form-group has-feedback">
-										{{form.orderType.label}}
-										{{form.orderType}}
-										{% if form.orderType.errors %}
-											<ul class="text-danger text-bold">
-											{% for error in form.orderType.errors %}
-												<li>{{ error }}</li>
-											{% endfor %}
-											</ul>
-										{% endif %}
-                                	</div>
-									<div class="col-md-6 form-group has-feedback">
-										{{form.orderVolume.label}}
-										{{form.orderVolume(class="form-control")}}
-										{% if form.orderVolume.errors %}
-											<ul class="text-danger text-bold">
-											{% for error in form.orderVolume.errors %}
-												<li>{{ error }}</li>
-											{% endfor %}
-											</ul>
-										{% endif %}
-                                	</div>
-								</div>
-								<div id="limitdiv"></div>
-                                <div id="error" class="text-danger text-bold">
-                                    {{ error }}
-                                  </div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-										<div type="button" id="form_submit" class="btn btn-block mt-10 btn-success" >Submit Order</div>
-                                      </div>
-                                  </div>
-                            </form>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Current Balance (USD) : {{balance}}</h3>
+                            <!-- add button to add balance -->
                         </div>
-					</div>
-				</div>
-			</div>
-		  </div>
-		</section>
-	  </div>
-  </div>
-  <!-- /.content-wrapper -->
+                        <div class="box-body" id="loader_placer">
+                            <div class="p-15">
+                                <form id="form_buy_sell">
+                                    {{form.csrf_token}}
+                                    <div class="side-headings"><h2>Buy / Sell</h2></div>
+                                    <div class="row col-md-12 form-group has-feedback">
+                                        {{form.stockID.label}}
+                                        {{form.stockID(class="form-control")}}
+                                        {% if form.stockID.errors %}
+                                        <ul class="text-danger text-bold">
+                                            {% for error in form.stockID.errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 form-group has-feedback">
+                                            {{form.transactionType.label}}
+                                            {{form.transactionType(class="form-control")}}
+                                            {% if form.transactionType.errors %}
+                                            <ul class="text-danger text-bold">
+                                                {% for error in form.transactionType.errors %}
+                                                <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6 form-group has-feedback">
+                                            {{form.orderType.label}}
+                                            {{form.orderType}}
+                                            {% if form.orderType.errors %}
+                                            <ul class="text-danger text-bold">
+                                                {% for error in form.orderType.errors %}
+                                                <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6 form-group has-feedback">
+                                            {{form.orderVolume.label}}
+                                            {{form.orderVolume(class="form-control")}}
+                                            {% if form.orderVolume.errors %}
+                                            <ul class="text-danger text-bold">
+                                                {% for error in form.orderVolume.errors %}
+                                                <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div id="limitdiv"></div>
+                                    <div class="text-danger text-bold" id="error">
+                                        {{ error }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <div class="btn btn-block mt-10 btn-success" id="form_submit" type="button">
+                                                Submit Order
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- /.content-wrapper -->
 {% endblock %}
 
 {% block scripts %}
-	<!-- popper -->
-	<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
+<!-- popper -->
+<script src="/static/assets/vendor_components/popper/dist/popper.min.js"></script>
 
-	<!-- Bootstrap 4.0-->
-	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap 4.0-->
+<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<!-- SlimScroll -->
-	<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- SlimScroll -->
+<script src="/static/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
-	<!-- FastClick -->
-	<!-- <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script> -->
-	<script src="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+<!-- FastClick -->
+<!-- <script src="/static/assets/vendor_components/fastclick/lib/fastclick.js"></script> -->
+<script src="/static/assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
 
-	<!-- UltimatePro Admin App -->
-	<script src="/static/js/template.js"></script>
-	<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
-	<script src="/static/js/user_buy_sell.js"></script>
+<!-- UltimatePro Admin App -->
+<script src="/static/js/template.js"></script>
+<script src="/static/assets/vendor_components/datatable/datatables.min.js"></script>
+<script src="/static/js/user_buy_sell.js"></script>
 {% endblock %}

@@ -1,49 +1,49 @@
-
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../images/favicon.ico">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <link href="../../images/favicon.ico" rel="icon">
 
     <title>503 Error </title>
-  
-	<!-- Bootstrap 4.0-->
-	<link rel="stylesheet" href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
-	
-	<!-- Bootstrap extend-->
-	<link rel="stylesheet" href="/static/css/bootstrap-extend.css">
 
-	<!-- Theme style -->
-	<link rel="stylesheet" href="/static/css/master_style.css">
+    <!-- Bootstrap 4.0-->
+    <link href="/static/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- UltimatePro Admin skins -->
-	<link rel="stylesheet" href="/static/css/skins/_all-skins.css">	
+    <!-- Bootstrap extend-->
+    <link href="/static/css/bootstrap-extend.css" rel="stylesheet">
+
+    <!-- Theme style -->
+    <link href="/static/css/master_style.css" rel="stylesheet">
+
+    <!-- UltimatePro Admin skins -->
+    <link href="/static/css/skins/_all-skins.css" rel="stylesheet">
 
 </head>
 <body class="hold-transition">
-	
-	<section class="error-page bg-secondary h-p100">
-		<div class="container h-p100">
-		  <div class="row h-p100 align-items-center justify-content-center text-center">
-			  <div class="col-lg-7 col-md-10 col-12">
-				  <div class="b-double border-gray rounded">
-					  <h1 class="text-white font-size-180 font-weight-bold error-page-title"> 503</h1>
-					  <h1>This Site Is Getting Up In Few Minutes.</h1>				  
-					  <h4 class="mt-15">Please try after some time</h4>	
-					  <h5 class="mt-15">-- OR --</h5>
-					  <div class="my-30"><a href="{{ url_for('auth_bp.login') }}" class="btn btn-danger btn-lg">Back to dashboard</a></div>
-				  </div>
-			  </div>				
-		  </div>
-		</div>
-	</section>
-	
 
-	<!-- Bootstrap 4.0-->
-	<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<section class="error-page bg-secondary h-p100">
+    <div class="container h-p100">
+        <div class="row h-p100 align-items-center justify-content-center text-center">
+            <div class="col-lg-7 col-md-10 col-12">
+                <div class="b-double border-gray rounded">
+                    <h1 class="text-white font-size-180 font-weight-bold error-page-title"> 503</h1>
+                    <h1>This Site Is Getting Up In Few Minutes.</h1>
+                    <h4 class="mt-15">Please try after some time</h4>
+                    <h5 class="mt-15">-- OR --</h5>
+                    <div class="my-30"><a class="btn btn-danger btn-lg" href="{{ url_for('auth_bp.login') }}">Back to
+                        dashboard</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Bootstrap 4.0-->
+<script src="/static/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
 </body>

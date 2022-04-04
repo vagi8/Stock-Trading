@@ -126,7 +126,7 @@ class StockTransaction(db.Model):
 
 
 class LimitTransaction(db.Model):
-    __tablename__="limit_transaction"
+    __tablename__ = "limit_transaction"
     id = db.Column(
         db.Integer,
         primary_key=True,
@@ -146,4 +146,3 @@ class LimitTransaction(db.Model):
         nullable=False
     )
     transaction = db.relationship('StockTransaction', backref='limitOrders', lazy=True)
-

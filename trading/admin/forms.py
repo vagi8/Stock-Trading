@@ -60,4 +60,3 @@ class CreateMarketHolidays(FlaskForm):
         validators=[DataRequired()]
     )
     submit = SubmitField('Add Holiday')
-

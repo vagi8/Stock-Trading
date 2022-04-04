@@ -1,6 +1,6 @@
 """Sign-up & log-in forms."""
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField,SelectField,IntegerField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 
@@ -41,7 +41,7 @@ class SignupForm(FlaskForm):
     )
     role = SelectField(
         'Role',
-        choices=[('Admin','Admin'),('User','User')]
+        choices=[('Admin', 'Admin'), ('User', 'User')]
     )
     submit = SubmitField('Register')
 

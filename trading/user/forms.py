@@ -81,7 +81,7 @@ class BuySellLimit(FlaskForm):
     )
     orderVolume = IntegerField(
         'No of Units',
-        validators=[DataRequired(),NumberRange(min=1, message="Minimum of one stock for a valid transaction")]
+        validators=[DataRequired(), NumberRange(min=1, message="Minimum of one stock for a valid transaction")]
     )
     transactionType = SelectField(
         'Buy/Sell',
@@ -99,4 +99,3 @@ class BuySellLimit(FlaskForm):
         'Limit Order Expiry'
     )
     submit = SubmitField('Submit Order')
-

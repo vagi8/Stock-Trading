@@ -82,7 +82,7 @@ def get_updated_stocks():
     if current_date.weekday() < 5 and market_hours[0].startHour.time() <= current_date.time() <= market_hours[
         0].endHour.time() and len(market_holidays) == 0:
         market = True
-        stocks = Stocks.query.with_entities(Stocks.id,Stocks.currentPrice)
+        stocks = Stocks.query.with_entities(Stocks.id, Stocks.currentPrice)
         stocks_data = pd.read_sql(stocks.statement, stocks.session.bind)
         stocks_data = json.loads(stocks_data.to_json(orient='records'))
     else:
@@ -108,14 +108,15 @@ def changeMarketHours():
 
     return redirect(url_for('admin_bp.dashboard'))
 
-@admin_bp.route("/post/delete_holiday/<id>",methods=['POST'])
+
+@admin_bp.route("/post/delete_holiday/<id>", methods=['POST'])
 def cancel_transaction(id):
-    id=int(id)
+    id = int(id)
     headers = {"Content-Type": "application/json"}
-    transaction=MarketHolidays.query.filter(MarketHolidays.id==id)
+    transaction = MarketHolidays.query.filter(MarketHolidays.id == id)
     if len(transaction.all()) == 0:
         return make_response(jsonify({'Error': 'No such day exists '}), 500, headers)
-    elif len(transaction.all())>1:
+    elif len(transaction.all()) > 1:
         return make_response(jsonify({'Error': 'Internal error'}), 500, headers)
     else:
         db.session.delete(transaction.first())
